@@ -3,13 +3,17 @@ class Renderer {
 
     static render = () => {
 
+        myGameArea.clear();
+
         this.renderChars();
+
+        this.renderSelectedCharPosition();
 
     }
 
     static renderChars = () => {
 
-        let chars = CharsManager.getChars();
+        const chars = CharsManager.getChars();
 
         for(let i=1; i < chars.length; i++) {
 
@@ -20,6 +24,13 @@ class Renderer {
             }
 
         }
+    }
+
+
+    static renderSelectedCharPosition = () => {
+
+        View.renderSelectedCharPosition(CharsManager.getSelectedChar(), CharsManager.getSelectedTeam());
+
     }
 
 }

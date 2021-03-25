@@ -26,11 +26,15 @@ class myGameArea {
                 y = event.pageY - (canvasek.offsetTop) - 7;
 
             Cursor.setPosition(x, y);
-            GameListener.moveAction();
+            GameListener.mouseMoveAction();
 
         }, false);
 
         Renderer.render();
+    }
+
+    static clear = () => {
+        this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
     static getCanvas = () => this.canvas;

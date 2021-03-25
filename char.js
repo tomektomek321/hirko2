@@ -25,11 +25,11 @@ class Char {
 
     renderPosition = (team) => {
 
-        let color = (team == 1) ? "red" : "blue";
+        const color = (team == 1) ? "red" : "blue";
 
         ctx = myGameArea.context;
 
-        let life = (this.char.life * (this.char.amount - 1)) + this.char.lifeOfLast;
+        const life = (this.char.life * (this.char.amount - 1)) + this.char.lifeOfLast;
 
         View.renderChar(ctx, this.positionX, this.positionY, this.char.side, color);
 

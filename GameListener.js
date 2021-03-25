@@ -8,7 +8,7 @@ class GameListener {
         Renderer.render();
     }
 
-    static moveAction = () => {
+    static mouseMoveAction = () => {
 
         // action
 
@@ -17,7 +17,7 @@ class GameListener {
 
     static nextCharacterAction = () => {
 
-        // action
+        CharsManager.selectNextChar();
 
         Renderer.render();
     }

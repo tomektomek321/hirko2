@@ -14,6 +14,13 @@ class View {
         ctx.fillText(name + ", life: " + life + ", (" + amount + "), dmg: " +  dmg * amount, x, y - 10);
     }
 
+    static renderSelectedCharPosition = (char, team) => {
+        const xyPos = char.getXY();
+		const posX = (team == 1) ? xyPos['X'] -15 : xyPos['X'] + 25;
+        ctx.fillStyle = "green";
+        ctx.fillRect(posX, xyPos['Y'] + 3, 7, 7);
+    }
+
     static endGame() {
         ctx.fillText(" GAME OVER ", 300, 10);
     }

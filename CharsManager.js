@@ -1,7 +1,11 @@
 
 class CharsManager {
 
-    static chars= [[],[],[]]; // [null, team1, team2] :)
+    static chars = [[],[],[]]; // [null, team1, team2] :)
+
+    static team_selected = 1;
+
+    static char_selected = 0;
 
     constructor() { }
 
@@ -31,7 +35,7 @@ class CharsManager {
 
     static setStartCharPosition = () => {
 
-        let tempPositionX = [null, 30, 450];
+        const tempPositionX = [null, 30, 450];
 
         let spaceBetweenCharactersOnY = 60;
 
@@ -48,8 +52,43 @@ class CharsManager {
         }
     }
 
+    static selectNextChar = () => {
+
+        let insur = 0;
+        let found = false;
+
+        this.char_selected++;
+
+        do {
+            if(insur > 30) break; // SECURE FOR INFINTE LOOP
+            insur++; // SECURE FOR INFINTE LOOP
+
+
+            if((this.char_selected > 0) && (this.char_selected > this.chars[this.team_selected].length - 1)) {
+                this.char_selected = 0;
+                this.team_selected = (this.team_selected == 1) ? 2 : 1;
+            }
+
+            if(this.chars[this.team_selected][this.char_selected].getAmount() == 0) {
+                this.char_selected++;
+                continue;
+            } else {
+                found = true;
+            }
+
+            if(!found)
+                this.char_selected++;
+
+        } while(!found)
+
+    }
+
 
     static getChars = () => this.chars;
 
+    static getSelectedChar = () => this.chars[this.team_selected][this.char_selected];
 
+    static getSelectedTeam = () => this.team_selected;
+
+    static getSelectedTeamAndChar = () => [this.team_selected, this.char_selected];
 }
