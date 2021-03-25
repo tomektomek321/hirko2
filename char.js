@@ -37,6 +37,17 @@ class Char {
 
     }
 
+    isHover = (cursor) => {
+        if((cursor.X > this.positionX && cursor.X < this.positionX + this.char.side)
+            && (cursor.Y > this.positionY && cursor.Y < this.positionY + this.char.side)) {
+            this.hover = true;
+            return true;
+        } else {
+            this.hover = false;
+            return false;
+        }
+    }
+
     getSide = () => this.char.side;
 
     getPosition = () =>  ({'X':this.centerXChar, 'Y': this.centerYChar})

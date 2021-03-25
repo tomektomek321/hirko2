@@ -7,6 +7,8 @@ class CharsManager {
 
     static char_selected = 0;
 
+    static hovered_char = null;
+
     constructor() { }
 
     static setStartChars = () => {
@@ -83,6 +85,10 @@ class CharsManager {
 
     }
 
+
+    static setHoveredChar = (char) => { this.hovered_char = char; console.log(this.hovered_char); }
+
+    static getHoveredChar = () => this.hovered_char;
 
     static getChars = () => this.chars;
 

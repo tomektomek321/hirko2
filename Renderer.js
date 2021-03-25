@@ -7,6 +7,8 @@ class Renderer {
 
         this.renderSelecterCharMoveArea();
 
+        this.renderHoveredCharMoveArea();
+
         this.renderChars();
 
         this.renderSelectedCharPosition();
@@ -40,6 +42,17 @@ class Renderer {
         View.renderSelectedCharPosition(CharsManager.getSelectedChar(), CharsManager.getSelectedTeam());
 
     }
+
+
+    static renderHoveredCharMoveArea = () => {
+
+        const hoveredChar = CharsManager.getHoveredChar();
+
+        if(hoveredChar)
+            View.renderHoveredCharMoveArea(hoveredChar);
+
+    }
+
 
 }
 
