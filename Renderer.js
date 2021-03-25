@@ -5,6 +5,8 @@ class Renderer {
 
         myGameArea.clear();
 
+        this.renderSelecterCharMoveArea();
+
         this.renderChars();
 
         this.renderSelectedCharPosition();
@@ -26,6 +28,12 @@ class Renderer {
         }
     }
 
+
+    static renderSelecterCharMoveArea = () => {
+
+        View.renderSelecterCharMoveArea(CharsManager.getSelectedChar());
+
+    }
 
     static renderSelectedCharPosition = () => {
 

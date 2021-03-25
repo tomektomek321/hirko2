@@ -47,5 +47,8 @@ class Char {
 
     getAmount = () =>  this.char.amount;
 
+    getMoveArea = () => this.char.moveArea;
+
+
 }
 
