@@ -1,0 +1,32 @@
+
+
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: #f1f1f1;
+    margin: 5px;
+    float: left;
+}
+
+
+#defDIV {
+    margin: 0px 0 5px 5px;
+}
+
+.spellList {
+    display: inline-block;
+}
+
+.spellBtn.Clicked {
+    color: red;
+}
+
+
+#spellsBtns {
+    margin-top: 10px;;
+    flex-wrap: wrap;
+}
+
+body {
+    background-color: #62536f;
+    color: white;
+}
