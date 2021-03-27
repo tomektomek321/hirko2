@@ -2,30 +2,41 @@
 
 class View {
 
-    static renderChar = (ctx, posX, posY, side, color) => {
+    static #instance;
+
+    static getInstance = () => {
+        if(this.#instance) {
+            return this.#instance;
+        }
+
+        this.#instance = new View();
+        return this.#instance;
+    }
+
+    renderChar = (ctx, posX, posY, side, color) => {
         ctx.fillStyle = color;
         if(posX == null || posY == null) return;
         ctx.fillRect(posX, posY, side, side);
     }
 
-    static renderCharInfo = (ctx, life, x, y, name, amount, dmg) => {
+    renderCharInfo = (ctx, life, x, y, name, amount, dmg) => {
         ctx.font = this.font + "px Ariel";
         ctx.fillStyle = "red";
         ctx.fillText(name + ", life: " + life + ", (" + amount + "), dmg: " +  dmg * amount, x, y - 10);
     }
 
-    static renderSelectedCharPosition = (char, team) => {
+    renderSelectedCharPosition = (char, team) => {
         const xyPos = char.getXY();
 		const posX = (team == 1) ? xyPos['X'] -15 : xyPos['X'] + 25;
         ctx.fillStyle = "green";
         ctx.fillRect(posX, xyPos['Y'] + 3, 7, 7);
     }
 
-    static endGame() {
+    endGame() {
         ctx.fillText(" GAME OVER ", 300, 10);
     }
 
-    static renderSelecterCharMoveArea = (char) => {
+    renderSelectedCharMoveArea = (char) => {
         if(char.getAmount() == 0) return;
 
         ctx.beginPath();
@@ -36,7 +47,7 @@ class View {
         ctx.stroke();
     }
 
-    static renderHoveredCharMoveArea = (char) => {
+    renderHoveredCharMoveArea = (char) => {
         ctx.beginPath();
         ctx.arc(char.centerXChar, char.centerYChar, char.getMoveArea(), 0, 2 * Math.PI);
         ctx.fillStyle = "#b7b4b4";

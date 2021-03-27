@@ -1,24 +1,35 @@
 
 class CharsManager {
 
-    static chars = [[],[],[]]; // [null, team1, team2] :)
+    instance;
 
-    static team_selected = 1;
+    chars = [[],[],[]]; // [null, team1, team2] :)
 
-    static char_selected = 0;
+    team_selected = 1;
 
-    static hovered_char = null;
+    char_selected = 0;
+
+    hovered_char = null;
 
     constructor() { }
 
-    static setStartChars = () => {
+    setStartChars = () => {
 
         this.initChars();
         this.setStartCharPosition();
     }
 
+    static getInstance = () => {
+        if(this.instance) {
+            return this.instance;
+        }
 
-    static initChars = () => {
+        this.instance = new CharsManager();
+        return this.instance;
+    }
+
+
+    initChars = () => {
 
         this.chars[1].push(
             new Char(new giermek(500)),
@@ -35,7 +46,7 @@ class CharsManager {
     }
 
 
-    static setStartCharPosition = () => {
+    setStartCharPosition = () => {
 
         const tempPositionX = [null, 30, 450];
 
@@ -54,7 +65,7 @@ class CharsManager {
         }
     }
 
-    static selectNextChar = () => {
+    selectNextChar = () => {
 
         let insur = 0;
         let found = false;
@@ -86,15 +97,15 @@ class CharsManager {
     }
 
 
-    static setHoveredChar = (char) => { this.hovered_char = char; console.log(this.hovered_char); }
+    setHoveredChar = (char) => { this.hovered_char = char; console.log(this.hovered_char); }
 
-    static getHoveredChar = () => this.hovered_char;
+    getHoveredChar = () => this.hovered_char;
 
-    static getChars = () => this.chars;
+    getChars = () => this.chars;
 
-    static getSelectedChar = () => this.chars[this.team_selected][this.char_selected];
+    getSelectedChar = () => this.chars[this.team_selected][this.char_selected];
 
-    static getSelectedTeam = () => this.team_selected;
+    getSelectedTeam = () => this.team_selected;
 
-    static getSelectedTeamAndChar = () => [this.team_selected, this.char_selected];
+    getSelectedTeamAndChar = () => [this.team_selected, this.char_selected];
 }

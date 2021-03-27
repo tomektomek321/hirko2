@@ -1,11 +1,11 @@
 
 class Cursor {
 
-    static position = { 'X': null, 'Y': null }
+    position = { 'X': null, 'Y': null }
 
-    static getPosition = () => this.position;
+    getPosition = () => this.position;
 
-    static setPosition = (x, y) => {
+    setPosition = (x, y) => {
         this.position['X'] = x;
         this.position['Y'] = y;
     }

@@ -1,11 +1,22 @@
 
 class Renderer {
 
-    static render = () => {
+    static #instance;
+
+    static getInstance = () => {
+        if(this.#instance) {
+            return this.#instance;
+        }
+
+        this.#instance = new Renderer();
+        return this.#instance;
+    }
+
+    render = () => {
 
         myGameArea.clear();
 
-        this.renderSelecterCharMoveArea();
+        this.renderSelectedCharMoveArea();
 
         this.renderHoveredCharMoveArea();
 
@@ -15,9 +26,9 @@ class Renderer {
 
     }
 
-    static renderChars = () => {
+    renderChars = () => {
 
-        const chars = CharsManager.getChars();
+        const chars = charManager.getChars();
 
         for(let i=1; i < chars.length; i++) {
 
@@ -31,25 +42,25 @@ class Renderer {
     }
 
 
-    static renderSelecterCharMoveArea = () => {
+    renderSelectedCharMoveArea = () => {
 
-        View.renderSelecterCharMoveArea(CharsManager.getSelectedChar());
-
-    }
-
-    static renderSelectedCharPosition = () => {
-
-        View.renderSelectedCharPosition(CharsManager.getSelectedChar(), CharsManager.getSelectedTeam());
+        view.renderSelectedCharMoveArea(charManager.getSelectedChar());
 
     }
 
+    renderSelectedCharPosition = () => {
 
-    static renderHoveredCharMoveArea = () => {
+        view.renderSelectedCharPosition(charManager.getSelectedChar(), charManager.getSelectedTeam());
 
-        const hoveredChar = CharsManager.getHoveredChar();
+    }
+
+
+    renderHoveredCharMoveArea = () => {
+
+        const hoveredChar = charManager.getHoveredChar();
 
         if(hoveredChar)
-            View.renderHoveredCharMoveArea(hoveredChar);
+            view.renderHoveredCharMoveArea(hoveredChar);
 
     }
 

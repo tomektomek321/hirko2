@@ -1,10 +1,21 @@
 
 
-class myGameArea {
+class MyGameArea {
+
+    static #instance;
 
     canvas;
 
-    static init = () => {
+    static getInstance = () => {
+        if(this.#instance) {
+            return this.#instance;
+        }
+
+        this.#instance = new MyGameArea();
+        return this.#instance;
+    }
+
+    init = () => {
         this.canvas = document.createElement("canvas");
         this.canvas.width = 600;
         this.canvas.height = 400;
@@ -15,29 +26,29 @@ class myGameArea {
 
         ctx = this.canvas.getContext("2d");
 
-        myGameArea.getCanvas().addEventListener('click', function(event) {
-            GameListener.clickAction();
+        myGameArea.canvas.addEventListener('click', function(event) {
+            gameListener.clickAction();
         }, false);
 
 
-        myGameArea.getCanvas().addEventListener('mousemove', function(event) {
-            let canvasek = myGameArea.getCanvas();
+        myGameArea.canvas.addEventListener('mousemove', function(event) {
+            let canvasek = myGameArea.canvas;
             let x = event.pageX - (canvasek.offsetLeft),
                 y = event.pageY - (canvasek.offsetTop) - 7;
 
-            Cursor.setPosition(x, y);
-            GameListener.mouseMoveAction();
+            cursor.setPosition(x, y);
+            gameListener.mouseMoveAction();
 
         }, false);
 
-        Renderer.render();
+        renderer.render();
     }
 
-    static clear = () => {
+    clear = () => {
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 
-    static getCanvas = () => this.canvas;
+    getCanvas = () => this.canvas;
 
 }
 

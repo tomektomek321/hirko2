@@ -1,44 +1,55 @@
 
 class GameListener {
 
-    static clickAction = () => {
+    static #instance;
+
+    static getInstance = () => {
+        if(this.#instance) {
+            return this.#instance;
+        }
+
+        this.#instance = new GameListener();
+        return this.#instance;
+    }
+
+    clickAction = () => {
 
         // action
 
-        Renderer.render();
+        renderer.render();
     }
 
-    static mouseMoveAction = () => {
+    mouseMoveAction = () => {
 
         this.checkIfHovered();
 
-        Renderer.render();
+        renderer.render();
     }
 
-    static nextCharacterAction = () => {
+    nextCharacterAction = () => {
 
-        CharsManager.selectNextChar();
+        charManager.selectNextChar();
 
-        Renderer.render();
+        renderer.render();
     }
 
 
-    static checkIfHovered = () => {
+    checkIfHovered = () => {
 
-        const chars = CharsManager.getChars();
+        const chars = charManager.getChars();
 
         for(var i=1; i < chars.length; i++) {
 
             for(var j=0; j < chars[i].length; j++) {
 
-                if(chars[i][j].isHover(Cursor.getPosition())) {
-                    CharsManager.setHoveredChar(chars[i][j]);
+                if(chars[i][j].isHover(cursor.getPosition())) {
+                    charManager.setHoveredChar(chars[i][j]);
                     return;
                 }
             }
         }
 
-        CharsManager.setHoveredChar(null);
+        charManager.setHoveredChar(null);
 
     }
 

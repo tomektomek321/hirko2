@@ -31,9 +31,9 @@ class Char {
 
         const life = (this.char.life * (this.char.amount - 1)) + this.char.lifeOfLast;
 
-        View.renderChar(ctx, this.positionX, this.positionY, this.char.side, color);
+        view.renderChar(ctx, this.positionX, this.positionY, this.char.side, color);
 
-        View.renderCharInfo(ctx, life, this.positionX, this.positionY, this.char.name, this.char.amount, this.char.demage);
+        view.renderCharInfo(ctx, life, this.positionX, this.positionY, this.char.name, this.char.amount, this.char.demage);
 
     }
 
