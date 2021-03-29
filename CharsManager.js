@@ -3,18 +3,14 @@ class CharsManager {
 
     instance;
 
-    chars = [[],[],[]]; // [null, team1, team2] :)
-
-    team_selected = 1;
-
-    char_selected = 0;
-
-    hovered_char = null;
-
-    constructor() { }
+    constructor() {
+        this.chars = [[],[],[]]; // [null, team1, team2] :)
+        this.team_selected = 1;
+        this.char_selected = 0;
+        this.hovered_char = null;
+    }
 
     setStartChars = () => {
-
         this.initChars();
         this.setStartCharPosition();
     }
@@ -32,16 +28,16 @@ class CharsManager {
     initChars = () => {
 
         this.chars[1].push(
-            new Char(new giermek(500)),
-            new Char(new dragon(30)),
-            new Char(new elf(215)),
-            new Char(new mag(20))
+            new Char(1, new giermek(500)),
+            new Char(1, new dragon(30)),
+            new Char(1, new elf(215)),
+            new Char(1, new mag(20))
         );
 
         this.chars[2].push(
-            new Char(new giermek(70)),
-            new Char(new dragon(2)),
-            new Char(new elf(10))
+            new Char(2, new giermek(70)),
+            new Char(2, new dragon(2)),
+            new Char(2, new elf(10))
         );
     }
 
@@ -50,7 +46,7 @@ class CharsManager {
 
         const tempPositionX = [null, 30, 450];
 
-        let spaceBetweenCharactersOnY = 60;
+        let spaceBetweenCharactersOnY;
 
         for(let i=1; i < this.chars.length; i++) {
 
@@ -82,7 +78,7 @@ class CharsManager {
                 this.team_selected = (this.team_selected == 1) ? 2 : 1;
             }
 
-            if(this.chars[this.team_selected][this.char_selected].getAmount() == 0) {
+            if(this.getSelectedChar().getAmount() == 0) {
                 this.char_selected++;
                 continue;
             } else {

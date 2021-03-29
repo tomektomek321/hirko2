@@ -36,6 +36,18 @@ class GameListener {
 
     checkIfHovered = () => {
 
+        /*
+        charManager.getChars().forEach(team => {
+            team.forEach(char => {
+                if(char.isHover(cursor.getPosition())) {
+                    charManager.setHoveredChar(char);
+                    return;
+                }
+            });
+        });
+        charManager.setHoveredChar(null);    // Te foreache nie dzialają (???)
+        */
+
         const chars = charManager.getChars();
 
         for(var i=1; i < chars.length; i++) {

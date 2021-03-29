@@ -8,7 +8,8 @@ class Char {
     centerXChar;
     centerYChar;
 
-    constructor(char) {
+    constructor(team, char) {
+        this.team = team;
         this.char = char;
         this.hover = false;
     }
@@ -23,17 +24,15 @@ class Char {
     }
 
 
-    renderPosition = (team) => {
+    renderPosition = () => {
 
-        const color = (team == 1) ? "red" : "blue";
-
-        ctx = myGameArea.context;
+        const color = (this.team == 1) ? "red" : "blue";
 
         const life = (this.char.life * (this.char.amount - 1)) + this.char.lifeOfLast;
 
-        view.renderChar(ctx, this.positionX, this.positionY, this.char.side, color);
+        view.renderChar(ctx, color, this);
 
-        view.renderCharInfo(ctx, life, this.positionX, this.positionY, this.char.name, this.char.amount, this.char.demage);
+        view.renderCharInfo(ctx, life, this);
 
     }
 

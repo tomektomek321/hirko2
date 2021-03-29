@@ -4,7 +4,10 @@ class MyGameArea {
 
     static #instance;
 
-    canvas;
+    constructor() {
+        this.canvas = document.createElement("canvas");
+        ctx = this.canvas.getContext("2d"); // set global ctx
+    }
 
     static getInstance = () => {
         if(this.#instance) {
@@ -16,15 +19,12 @@ class MyGameArea {
     }
 
     init = () => {
-        this.canvas = document.createElement("canvas");
         this.canvas.width = 600;
         this.canvas.height = 400;
         this.canvas.setAttribute("id", "myCanvas"),
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
         this.frameNo = 0;
-
-        ctx = this.canvas.getContext("2d");
 
         myGameArea.canvas.addEventListener('click', function(event) {
             gameListener.clickAction();
