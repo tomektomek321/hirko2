@@ -14,7 +14,9 @@ class GameListener {
 
     clickAction = () => {
 
-        // action
+        if(charManager.getHoveredChar() == null) { // move
+            move.makeMove(charManager.getSelectedChar(), cursor.getPosition(), this.nextCharacterAction);
+        }
 
         renderer.render();
     }

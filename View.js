@@ -19,11 +19,11 @@ class View {
         ctx.fillRect(positionX, positionY, side, side);
     }
 
-    renderCharInfo = (ctx, life, { positionX, positionY,  char: {name, amount , dmg} }) => {
+    renderCharInfo = (ctx, life, { positionX, positionY,  char: {name, amount , damage} }) => {
 
         ctx.font = this.font + "px Ariel";
         ctx.fillStyle = "red";
-        ctx.fillText(name + ", life: " + life + ", (" + amount + "), dmg: " +  dmg * amount, positionX, positionY - 10);
+        ctx.fillText(name + ", life: " + life + ", (" + amount + "), dmg: " +  damage * amount, positionX, positionY - 10);
     }
 
     renderSelectedCharPosition = (char, team) => {

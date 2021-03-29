@@ -5,6 +5,7 @@
 	<head>
 		<link rel="stylesheet" href='basic.css'>
 
+		<script src="Move.js" ></script>
 		<script src="View.js" ></script>
 		<script src="Renderer.js" ></script>
 		<script src="CharsManager.js" ></script>
@@ -30,6 +31,8 @@
 <script>
 
 	var ctx; // global canvas context
+
+	var move = Move.getInstance();
 
 	var view = View.getInstance();
 	var renderer = Renderer.getInstance();
