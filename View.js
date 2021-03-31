@@ -57,4 +57,14 @@ class View {
         ctx.stroke();
     }
 
+    renderSpellsButtons = (char) => {
+        ctx.beginPath();
+        ctx.arc(char.centerXChar, char.centerYChar, char.getMoveArea(), 0, 2 * Math.PI);
+        ctx.fillStyle = "#b7b4b4";
+        ctx.fill();
+        ctx.strokeStyle = "#C0C0C0";
+        ctx.stroke();
+    }
+
+
 }

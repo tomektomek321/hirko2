@@ -4,26 +4,24 @@ canvas {
     border:1px solid #d3d3d3;
     background-color: #f1f1f1;
     margin: 5px;
-    float: left;
 }
 
-
-#defDIV {
-    margin: 0px 0 5px 5px;
+.spellsBtns {
+    margin-top: 10px;
+    flex-wrap: wrap;
 }
 
-.spellList {
-    display: inline-block;
+.spellBtn {
+    background-color: #504848;
+    border: 1px solid #4e4242;
+    color: white;
+    padding: 10px 15px;
+    margin-right: 5px;
 }
 
 .spellBtn.Clicked {
+    background-color: #000000;
     color: red;
-}
-
-
-#spellsBtns {
-    margin-top: 10px;;
-    flex-wrap: wrap;
 }
 
 body {

@@ -24,6 +24,8 @@ class Renderer {
 
         this.renderSelectedCharPosition();
 
+        this.renderSpellsButtons();
+
     }
 
     renderChars = () => {
@@ -55,6 +57,12 @@ class Renderer {
 
         if(hoveredChar)
             view.renderHoveredCharMoveArea(hoveredChar);
+
+    }
+
+    renderSpellsButtons = () => {
+
+        spellsManager.updateSpellsButtons(charManager.getSelectedChar());
 
     }
 

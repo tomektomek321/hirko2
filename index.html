@@ -5,6 +5,9 @@
 	<head>
 		<link rel="stylesheet" href='basic.css'>
 
+		<script src="SpellsView.js" ></script>
+		<script src="Spell.js" ></script>
+		<script src="SpellsManager.js" ></script>
 		<script src="Move.js" ></script>
 		<script src="View.js" ></script>
 		<script src="Renderer.js" ></script>
@@ -18,11 +21,9 @@
 
 <body>
 
-	<div id="defDIV">
-		<button type="button" class="btn btn-secondary"  onclick="gameListener.nextCharacterAction()">Next/Defence</button>
+	<div class="btn-group btn-group-lg" id="spellsBtns" class="spellsBtns">
+		<button type="button" class="spellBtn btn btn-secondary">Next/Defence</button>
 	</div>
-
-	<div class="btn-group btn-group-lg" id="spellsBtns"></div>
 
 	<span id="char_info"></span>
 
@@ -31,6 +32,11 @@
 <script>
 
 	var ctx; // global canvas context
+
+	var spellsView = SpellsView.getInstance();
+
+	var spell = Spell.getInstance();
+	var spellsManager = SpellsManager.getInstance();
 
 	var move = Move.getInstance();
 
