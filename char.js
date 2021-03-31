@@ -12,6 +12,7 @@ class Char {
         this.team = team;
         this.char = char;
         this.hover = false;
+        this.spellsUpon = [];
     }
 
     setPosition = (x , y) => {
@@ -59,6 +60,9 @@ class Char {
 
     getMoveArea = () => this.char.moveArea;
 
+    getSpells = () => this.char.magic;
+
+    canSpell = () => (this.char.magic && this.char.magic.length > 0) ? true : false;
 
 }
 
