@@ -28,5 +28,5 @@ class Spell {
             this.choosen = spell;
         }
 	}
-
+    //
 }
