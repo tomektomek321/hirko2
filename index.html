@@ -5,6 +5,8 @@
 	<head>
 		<link rel="stylesheet" href='basic.css'>
 
+		<script src="Logger.js" ></script>
+		<script src="AttackManager.js" ></script>
 		<script src="SpellsView.js" ></script>
 		<script src="Spell.js" ></script>
 		<script src="SpellsManager.js" ></script>
@@ -24,6 +26,9 @@
 	<div class="btn-group btn-group-lg" id="spellsBtns" class="spellsBtns">
 		<button type="button" class="spellBtn btn btn-secondary">Next/Defence</button>
 	</div>
+	<div id="logger" class="logger">
+
+	</div>
 
 	<span id="char_info"></span>
 
@@ -34,6 +39,8 @@
 	var ctx; // global canvas context
 
 	var spellsView = SpellsView.getInstance();
+
+	var attackManager = AttackManager.getInstance();
 
 	var spell = Spell.getInstance();
 	var spellsManager = SpellsManager.getInstance();

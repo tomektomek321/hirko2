@@ -13,6 +13,20 @@ class Character {
         this.nowAttack = nowAttack;
     }
 
+    getDamage = () => this.damage;
+
+    getLife = () => this.life;
+
+    setLife = (life) => {this.life = life};
+
+    getLifeOfLast = () => this.lifeOfLast;
+
+    setLifeOfLast = (lifeOfLast) => {this.lifeOfLast = lifeOfLast};
+
+    getAmount = () => this.amount;
+
+    setAmount = (amount) => {this.amount = amount};
+
 }
 
 

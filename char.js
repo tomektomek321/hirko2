@@ -41,9 +41,18 @@ class Char {
         if((cursor.X > this.positionX && cursor.X < this.positionX + this.char.side)
             && (cursor.Y > this.positionY && cursor.Y < this.positionY + this.char.side)) {
             this.hover = true;
-            return true;
+            return this;
         } else {
             this.hover = false;
+            return false;
+        }
+    }
+
+    charMovedOnChar = (pos) => {
+        if((pos.X > this.positionX && pos.X < this.positionX + this.char.side)
+        && (pos.Y > this.positionY && pos.Y < this.positionY + this.char.side)) {
+            return true;
+        } else {
             return false;
         }
     }
@@ -58,11 +67,31 @@ class Char {
 
     getAmount = () =>  this.char.amount;
 
+    setAmount = (amount) =>  {this.char.setAmount(amount);}
+
     getMoveArea = () => this.char.moveArea;
 
     getSpells = () => this.char.magic;
 
     canSpell = () => (this.char.magic && this.char.magic.length > 0) ? true : false;
+
+    getDamage = () => this.char.getDamage();
+
+    getLife = () => this.char.getLife();
+
+    getLifeOfLast = () => this.char.getLifeOfLast();
+
+    setLifeOfLast = (lifeOfLast) => {this.char.setLifeOfLast(lifeOfLast);}
+
+    makeDead = () => {
+        this.char.setLife(0);
+        this.char.setLifeOfLast(0);
+        this.char.setAmount(0);
+        this.posX = null;
+        this.posY = null;
+        this.centerXChar = null;
+        this.centerYChar = null;
+    }
 
 }
 

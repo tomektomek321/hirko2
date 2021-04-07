@@ -54,9 +54,9 @@ class Renderer {
     renderHoveredCharMoveArea = () => {
 
         const hoveredChar = charManager.getHoveredChar();
-
-        if(hoveredChar)
+        if(hoveredChar) {
             view.renderHoveredCharMoveArea(hoveredChar);
+        }
 
     }
 

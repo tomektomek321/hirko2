@@ -12,13 +12,20 @@ class GameListener {
         return this.#instance;
     }
 
-    clickAction = () => {
+    clickAction = async() => {
 
         if(charManager.getHoveredChar() == null) { // move
-            move.makeMove(charManager.getSelectedChar(), cursor.getPosition(), this.nextCharacterAction);
+            await move.makeMove(charManager.getSelectedChar(), cursor.getPosition());
+            this.nextCharacterAction();
+        } else if(charManager.getHoveredChar()) {
+            const moveOk = await move.makeMove(charManager.getSelectedChar(), cursor.getPosition(), charManager.getHoveredChar());
+            if(moveOk) {
+                await attackManager.defaultAttack(charManager.getSelectedChar(), charManager.getHoveredChar());
+                this.nextCharacterAction();
+            }
         }
 
-        renderer.render();
+        //renderer.render();
     }
 
     mouseMoveAction = () => {
@@ -57,7 +64,8 @@ class GameListener {
             for(var j=0; j < chars[i].length; j++) {
 
                 if(chars[i][j].isHover(cursor.getPosition())) {
-                    charManager.setHoveredChar(chars[i][j]);
+                    //charManager.setHoveredChar(chars[i][j]);
+                    charManager.setHoveredChar(i, j);
                     return;
                 }
             }

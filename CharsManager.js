@@ -7,7 +7,7 @@ class CharsManager {
         this.chars = [[],[],[]]; // [null, team1, team2] :)
         this.team_selected = 1;
         this.char_selected = 0;
-        this.hovered_char = null;
+        this.hovered_char = {'team': null, 'charIndex': null};
     }
 
     setStartChars = () => {
@@ -65,12 +65,11 @@ class CharsManager {
 
         let insur = 0;
         let found = false;
-
+        Logger.logDefence(this.getSelectedChar(), this.team_selected, this.char_selected);
         this.char_selected++;
 
         do {
-            if(insur > 30) break; // SECURE FOR INFINTE LOOP
-            insur++; // SECURE FOR INFINTE LOOP
+            if(insur > 30) {break;} insur++; // SECURE FOR INFINTE LOOP
 
 
             if((this.char_selected > 0) && (this.char_selected > this.chars[this.team_selected].length - 1)) {
@@ -93,9 +92,15 @@ class CharsManager {
     }
 
 
-    setHoveredChar = (char) => { this.hovered_char = char; console.log(this.hovered_char); }
+    setHoveredChar = (team, char) => { this.hovered_char['team'] = team, this.hovered_char['charIndex'] = char; console.log(this.getHoveredChar()); }
 
-    getHoveredChar = () => this.hovered_char;
+    getHoveredChar = () =>  {
+        if(this.hovered_char['team'] != undefined && this.hovered_char['charIndex'] != undefined) {
+            return this.chars[this.hovered_char['team']][this.hovered_char['charIndex']];
+        } else {
+            return false;
+        }
+    }
 
     getChars = () => this.chars;
 
