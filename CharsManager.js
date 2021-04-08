@@ -102,6 +102,10 @@ class CharsManager {
         }
     }
 
+    getChar = (team, charIndex) => this.chars[team][charIndex];
+
+    getHoveredCharNoRef = () => [this.hovered_char['team'], this.hovered_char['charIndex']];
+
     getChars = () => this.chars;
 
     getSelectedChar = () => this.chars[this.team_selected][this.char_selected];

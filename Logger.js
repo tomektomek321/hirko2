@@ -1,7 +1,6 @@
 
 class Logger {
 
-
     static logDefence(charSelected, team, charIndex) {
 
         const div = document.createElement("div");
@@ -26,27 +25,17 @@ class Logger {
     }
 
 
-    static logAttack(charSelected, charAttacked, teamCharIndex, from, to) {
+    static logAttack(charSelected, charAttacked, teamCharIndex, damage, to) {
 
         const div = document.createElement("div");
 
         div.innerHTML = "Char from team " + teamCharIndex[0]
-            + ", position " + (teamCharIndex[1] + 1) + " (" + charSelected.getName() + ")"
-            +
-
-
-
-
-
+            + ", position " + (teamCharIndex[1] + 1) + " (" + charSelected.getName() + ") :"
+            + "Attack : with damage " +  damage + "<br />";
 
         document.getElementById("logger").appendChild(div);
 
     }
-
-
-
-
-
 
 
 }

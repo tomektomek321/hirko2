@@ -1,7 +1,6 @@
 
 class AttackManager {
 
-
     static #instance;
 
     static getInstance = () => {
@@ -17,8 +16,9 @@ class AttackManager {
 
     defaultAttack = (attacker, enemy_) => {
         return new Promise((resolve, reject) => {
+            console.log(enemy_);
 
-            const enemy = enemy_
+            const enemy =  charManager.getChar(enemy_[0], enemy_[1] );
             const length = attacker.getAmount();
 
             let damage;
@@ -63,7 +63,7 @@ class AttackManager {
 
                 }
 
-                Logger.logAttack()
+                Logger.logAttack(attacker, enemy, charManager.getSelectedTeamAndChar(), totalDemage);
 
 
                 enemy.setAmount(newAmount);console.log(modul);
@@ -75,21 +75,5 @@ class AttackManager {
 
     }
 
-
-
-
-
-
-
 }
-
-
-
-
-
-
-
-
-
-
 

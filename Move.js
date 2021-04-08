@@ -18,7 +18,6 @@ class Move {
         return new Promise( (resolve, reject) => {
 
             const moveArea = char.getMoveArea();
-            const hov_char = hovChar;
 
             const start_pos = char.getPosition();
 
@@ -45,17 +44,13 @@ class Move {
                 next_posX = next_posX + x_len;
                 next_posY = next_posY + y_len;
 
-                if(hov_char) {
-
-                }
-
                 char.setPosition(next_posX - 7, next_posY - 7);
 
                 renderer.render();
 
                 if(cl > 90) clearInterval(intervalek);
 
-                if(counterDivider > DIVIDE_INTERVAL || (hov_char?.charMovedOnChar( { 'X': next_posX , 'Y': next_posY}) ) ) {
+                if(counterDivider > DIVIDE_INTERVAL /*|| (hov_char?.charMovedOnChar( { 'X': next_posX , 'Y': next_posY}*/) {
                     Logger.logMove(
                         char,
                         charManager.getSelectedTeamAndChar(),

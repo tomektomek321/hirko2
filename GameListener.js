@@ -14,13 +14,14 @@ class GameListener {
 
     clickAction = async() => {
 
-        if(charManager.getHoveredChar() == null) { // move
+        if(!charManager.getHoveredChar()) { // move
             await move.makeMove(charManager.getSelectedChar(), cursor.getPosition());
             this.nextCharacterAction();
         } else if(charManager.getHoveredChar()) {
-            const moveOk = await move.makeMove(charManager.getSelectedChar(), cursor.getPosition(), charManager.getHoveredChar());
+            const hovCharNoRef = charManager.getHoveredCharNoRef();
+            const moveOk = await move.makeMove(charManager.getSelectedChar(), cursor.getPosition(), charManager.getHoveredCharNoRef());
             if(moveOk) {
-                await attackManager.defaultAttack(charManager.getSelectedChar(), charManager.getHoveredChar());
+                await attackManager.defaultAttack(charManager.getSelectedChar(), hovCharNoRef);
                 this.nextCharacterAction();
             }
         }
