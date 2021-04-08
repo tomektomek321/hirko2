@@ -22,6 +22,8 @@ class Renderer {
 
         this.renderChars();
 
+        this.renderSpell();
+
         this.renderSelectedCharPosition();
 
         this.renderSpellsButtons();
@@ -63,6 +65,14 @@ class Renderer {
     renderSpellsButtons = () => {
 
         spellsManager.updateSpellsButtons(charManager.getSelectedChar());
+
+    }
+
+    renderSpell = () => {
+
+        if(spell.hasSpell())
+            spellsManager.render();
+
 
     }
 

@@ -93,5 +93,7 @@ class Char {
         this.centerYChar = null;
     }
 
+    getSpellData = (spell) => this.char.getSpellData(spell);
+
 }
 

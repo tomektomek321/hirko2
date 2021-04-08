@@ -23,16 +23,14 @@ class AttackManager {
 
             let damage;
 
-
             damage = attacker.getDamage();console.log(damage);
-
 
             let totalDemage = damage * length;
 
             let def = enemy.getLife();
 
-
             const lastDef = enemy.getLifeOfLast();
+
             let totalDef = (def * (enemy.getAmount() - 1)) + lastDef;console.log(totalDef);
 
             let newAmount, modul;
@@ -49,9 +47,7 @@ class AttackManager {
 
                     modul = totalDef % def
 
-                    newAmount = totalDef / def;
-                    newAmount = newAmount.toFixed();
-                    newAmount = parseInt(newAmount);
+                    newAmount = parseInt((totalDef / def).toFixed());
 
                 } else {
 

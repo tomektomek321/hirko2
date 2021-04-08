@@ -88,5 +88,10 @@ class mag extends Character {
         ]
     }
 
+    getSpellData = (spell) => {
+        const found = this.magic.filter(x => x.name == spell);
+        return found ? found[0] : false; // [ {spell} ]
+    }
+
 }
 

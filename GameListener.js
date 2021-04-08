@@ -26,7 +26,6 @@ class GameListener {
             }
         }
 
-        //renderer.render();
     }
 
     mouseMoveAction = () => {

@@ -27,6 +27,8 @@ class SpellsManager {
 
     }
 
-
+    render = () => {
+        spell.getChoosen().render();
+    }
 
 }
