@@ -11,6 +11,8 @@ class Spell {
 
     hasSpell = () => (this.choosen != null) ? true : false;
 
+    resetSpell = () => {  this.choosen = null; }
+
     setChoosen = (spell) => {
 
         if(spell.name == "move/attack") {

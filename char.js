@@ -27,7 +27,13 @@ class Char {
 
     renderPosition = () => {
 
-        const color = (this.team == 1) ? "red" : "blue";
+        let color = (this.team == 1) ? "red" : "blue";
+
+        if(spell.hasSpell()) {
+            if(spellsManager.isCharReachedBySpell(spell.getChoosen(), cursor.getPosition(), this)) {
+                color = "yellow";
+            }
+        }
 
         const life = (this.char.life * (this.char.amount - 1)) + this.char.lifeOfLast;
 
@@ -35,6 +41,10 @@ class Char {
 
         view.renderCharInfo(ctx, life, this);
 
+    }
+
+    isReachedBySpell = (spell_, cursor_) => {
+        return spellsManager.isCharReachedBySpell(spell_, cursor_, this)
     }
 
     isHover = (cursor) => {
@@ -94,6 +104,8 @@ class Char {
     }
 
     getSpellData = (spell) => this.char.getSpellData(spell);
+
+    getTeam = () => this.team;
 
 }
 

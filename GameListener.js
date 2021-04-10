@@ -3,7 +3,10 @@ class GameListener {
 
     clickAction = async() => {
 
-        if(!charManager.getHoveredChar()) { // move
+        if(spell.hasSpell()) { // click while using spell
+            await spell.getChoosen().attack();
+            this.nextCharacterAction();
+        } else if(!charManager.getHoveredChar()) { // move
             await move.makeMove(charManager.getSelectedChar(), cursor.getPosition());
             this.nextCharacterAction();
         } else if(charManager.getHoveredChar()) {
@@ -25,6 +28,8 @@ class GameListener {
     }
 
     nextCharacterAction = () => {
+
+        this.resetSpell();
 
         charManager.selectNextChar();
 
@@ -62,6 +67,10 @@ class GameListener {
 
         charManager.setHoveredChar(null);
 
+    }
+
+    resetSpell = () => {
+        spell.resetSpell();
     }
 
 

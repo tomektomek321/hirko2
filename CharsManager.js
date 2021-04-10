@@ -101,4 +101,6 @@ class CharsManager {
     getSelectedTeam = () => this.team_selected;
 
     getSelectedTeamAndChar = () => [this.team_selected, this.char_selected];
+
+    getCharsFromTeam = (team) => this.chars[team];
 }

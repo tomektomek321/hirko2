@@ -42,4 +42,28 @@ class Fireball {
 
     }
 
+    attack = () => {
+        return new Promise((resolve, reject) => {
+
+            let team = charManager.getSelectedTeamAndChar()[0];
+
+            let oponent = (team == 1) ? 2 : 1;
+
+            let chars = charManager.getCharsFromTeam(oponent);
+
+            for(let i = 0; i < chars.length; i++) {
+
+                let tempChar = [oponent, i]; // tempChar with noRef
+
+                if(chars[i].isReachedBySpell(spell.getChoosen(), cursor.getPosition())) {
+
+                    attackManager.defaultAttack(chars[i], tempChar);
+                }
+            }
+
+            resolve("OK");
+
+        });
+    }
+
 }
