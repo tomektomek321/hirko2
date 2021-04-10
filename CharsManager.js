@@ -16,16 +16,16 @@ class CharsManager {
     initChars = () => {
 
         this.chars[1].push(
-            new Char(1, new giermek(500)),
-            new Char(1, new dragon(30)),
-            new Char(1, new elf(215)),
-            new Char(1, new mag(20))
+            new Char(1, new Squire(500)),
+            new Char(1, new Dragon(30)),
+            new Char(1, new Elf(215)),
+            new Char(1, new Magician(20))
         );
 
         this.chars[2].push(
-            new Char(2, new giermek(70)),
-            new Char(2, new dragon(2)),
-            new Char(2, new elf(10))
+            new Char(2, new Squire(70)),
+            new Char(2, new Dragon(2)),
+            new Char(2, new Elf(10))
         );
     }
 
