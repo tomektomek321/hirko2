@@ -2,20 +2,9 @@
 
 class MyGameArea {
 
-    static #instance;
-
     constructor() {
         this.canvas = document.createElement("canvas");
         ctx = this.canvas.getContext("2d"); // set global ctx
-    }
-
-    static getInstance = () => {
-        if(this.#instance) {
-            return this.#instance;
-        }
-
-        this.#instance = new MyGameArea();
-        return this.#instance;
     }
 
     init = () => {

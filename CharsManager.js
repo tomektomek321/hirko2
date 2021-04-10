@@ -1,8 +1,6 @@
 
 class CharsManager {
 
-    instance;
-
     constructor() {
         this.chars = [[],[],[]]; // [null, team1, team2] :)
         this.team_selected = 1;
@@ -14,16 +12,6 @@ class CharsManager {
         this.initChars();
         this.setStartCharPosition();
     }
-
-    static getInstance = () => {
-        if(this.instance) {
-            return this.instance;
-        }
-
-        this.instance = new CharsManager();
-        return this.instance;
-    }
-
 
     initChars = () => {
 

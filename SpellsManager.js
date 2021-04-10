@@ -1,19 +1,6 @@
 
 class SpellsManager {
 
-
-    static #instance;
-
-    static getInstance = () => {
-        if(this.#instance) {
-            return this.#instance;
-        }
-
-        this.#instance = new SpellsManager();
-        return this.#instance;
-    }
-
-
     updateSpellsButtons = (char) => {
 
         let spells = [];

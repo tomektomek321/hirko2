@@ -39,28 +39,28 @@
 
 	var ctx; // global canvas context
 
-	var spellsView = SpellsView.getInstance();
+	var spellsView = new SpellsView();
 
-	var attackManager = AttackManager.getInstance();
+	var attackManager = new AttackManager();
 
-	var spell = Spell.getInstance();
-	var spellsManager = SpellsManager.getInstance();
+	var spell = new Spell();
+	var spellsManager = new SpellsManager();
 
-	var move = Move.getInstance();
+	var move = new Move();
 
-	var view = View.getInstance();
-	var renderer = Renderer.getInstance();
+	var view = new View();
+	var renderer = new Renderer();
 
 
-	var charManager = CharsManager.getInstance();
+	var charManager = new CharsManager();
 		charManager.setStartChars();
 
-	var myGameArea = MyGameArea.getInstance();
+	var myGameArea = new MyGameArea();
 		myGameArea.init();
 
 
 
-	var gameListener = GameListener.getInstance();
+	var gameListener = new GameListener();
 
 	var cursor = new Cursor();
 

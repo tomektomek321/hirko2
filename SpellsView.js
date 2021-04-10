@@ -1,17 +1,6 @@
 
 class SpellsView {
 
-    static #instance;
-
-    static getInstance = () => {
-        if(this.#instance) {
-            return this.#instance;
-        }
-
-        this.#instance = new SpellsView();
-        return this.#instance;
-    }
-
     resetBtns = () => {
 
         const spellsBox = document.getElementById("spellsBtns");

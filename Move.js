@@ -2,18 +2,6 @@
 
 class Move {
 
-    static #instance;
-
-    static getInstance = () => {
-        if(this.#instance) {
-            return this.#instance;
-        }
-
-        this.#instance = new Move();
-        return this.#instance;
-    }
-
-
     makeMove = (char, pos, hovChar) => {
         return new Promise( (resolve, reject) => {
 

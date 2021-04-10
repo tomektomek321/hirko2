@@ -1,17 +1,6 @@
 
 class Renderer {
 
-    static #instance;
-
-    static getInstance = () => {
-        if(this.#instance) {
-            return this.#instance;
-        }
-
-        this.#instance = new Renderer();
-        return this.#instance;
-    }
-
     render = () => {
 
         myGameArea.clear();

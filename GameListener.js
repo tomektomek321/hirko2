@@ -1,17 +1,6 @@
 
 class GameListener {
 
-    static #instance;
-
-    static getInstance = () => {
-        if(this.#instance) {
-            return this.#instance;
-        }
-
-        this.#instance = new GameListener();
-        return this.#instance;
-    }
-
     clickAction = async() => {
 
         if(!charManager.getHoveredChar()) { // move

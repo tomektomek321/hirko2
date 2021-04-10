@@ -1,19 +1,6 @@
 
 class AttackManager {
 
-    static #instance;
-
-    static getInstance = () => {
-        if(this.#instance) {
-            return this.#instance;
-        }
-
-        this.#instance = new AttackManager();
-        return this.#instance;
-    }
-
-
-
     defaultAttack = (attacker, enemy_) => {
         return new Promise((resolve, reject) => {
             console.log(enemy_);

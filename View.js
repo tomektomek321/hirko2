@@ -2,17 +2,6 @@
 
 class View {
 
-    static #instance;
-
-    static getInstance = () => {
-        if(this.#instance) {
-            return this.#instance;
-        }
-
-        this.#instance = new View();
-        return this.#instance;
-    }
-
     renderChar = (ctx, color, { positionX, positionY,  char: {side} }) => {
         ctx.fillStyle = color;
         if(positionX == null || positionY == null) return;
