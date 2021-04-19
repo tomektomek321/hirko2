@@ -23,7 +23,8 @@ class Renderer {
 
         charManager.getChars().forEach(team => {
             team.forEach(char => {
-                char.renderPosition();
+                view.renderChar(char); //char.renderPosition();
+                view.renderCharInfo(char);
             });
         });
     }

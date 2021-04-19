@@ -2,21 +2,32 @@
 
 class View {
 
-    renderChar = (ctx, color, { positionX, positionY,  char: {side} }) => {
+    renderChar = (char) => {
+        if(char.getPosition()['X'] == null || char.getPosition()['Y'] == null) return;
+        let color = (char.getTeam() == 1) ? "red" : "blue";
+
+        if(spell.hasSpell()) {
+            if(spellsManager.isCharReachedBySpell(spell.getChoosen(), cursor.getPosition(), char)) {
+                color = "yellow";
+            }
+        }
         ctx.fillStyle = color;
-        if(positionX == null || positionY == null) return;
-        ctx.fillRect(positionX, positionY, side, side);
+        ctx.fillRect(char.getPosition()['X'], char.getPosition()['Y'], char.getSide(), char.getSide());
     }
 
-    renderCharInfo = (ctx, life, { positionX, positionY,  char: {name, amount , damage} }) => {
-
+    renderCharInfo = (char) => {
         ctx.font = this.font + "px Ariel";
         ctx.fillStyle = "red";
-        ctx.fillText(name + ", life: " + life + ", (" + amount + "), dmg: " +  damage * amount, positionX, positionY - 10);
+        const life = (char.getLife() * (char.getAmount() - 1)) + char.getLifeOfLast();
+
+        ctx.fillText(char.getName() + ", life: "
+            + life+ ", (" + char.getAmount() + "), dmg: "
+            +  char.getDamage() * char.getAmount()
+            , char.getPosition()['X'], char.getPosition()['Y'] - 10);
     }
 
     renderSelectedCharPosition = (char, team) => {
-        const xyPos = char.getXY();
+        const xyPos = char.getPosition();
 		const posX = (team == 1) ? xyPos['X'] -15 : xyPos['X'] + 25;
         ctx.fillStyle = "green";
         ctx.fillRect(posX, xyPos['Y'] + 3, 7, 7);
@@ -30,7 +41,7 @@ class View {
         if(char.getAmount() == 0) return;
 
         ctx.beginPath();
-        ctx.arc(char.centerXChar, char.centerYChar, char.getMoveArea(), 0, 2 * Math.PI);
+        ctx.arc(char.getPosition()['X'], char.getPosition()['Y'], char.getMoveArea(), 0, 2 * Math.PI);
         ctx.fillStyle = "#DCDCDC";
         ctx.fill();
         ctx.strokeStyle = "#C0C0C0";
@@ -39,7 +50,7 @@ class View {
 
     renderHoveredCharMoveArea = (char) => {
         ctx.beginPath();
-        ctx.arc(char.centerXChar, char.centerYChar, char.getMoveArea(), 0, 2 * Math.PI);
+        ctx.arc(char.getPosition()['X'], char.getPosition()['Y'], char.getMoveArea(), 0, 2 * Math.PI);
         ctx.fillStyle = "#b7b4b4";
         ctx.fill();
         ctx.strokeStyle = "#C0C0C0";
@@ -48,7 +59,7 @@ class View {
 
     renderSpellsButtons = (char) => {
         ctx.beginPath();
-        ctx.arc(char.centerXChar, char.centerYChar, char.getMoveArea(), 0, 2 * Math.PI);
+        ctx.arc(char.getPosition()['X'], char.getPosition()['Y'], char.getMoveArea(), 0, 2 * Math.PI);
         ctx.fillStyle = "#b7b4b4";
         ctx.fill();
         ctx.strokeStyle = "#C0C0C0";

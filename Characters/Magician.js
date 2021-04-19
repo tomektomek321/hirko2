@@ -1,8 +1,8 @@
 
 class Magician extends Character {
 
-    constructor(amount) {
-        super("Magician", 50, 50, 100, 15, 25, false, amount, {});
+    constructor(team, amount) {
+        super("Magician", team, 50, 50, 100, 15, 25, false, amount, {});
 
         this.magic = [
             {

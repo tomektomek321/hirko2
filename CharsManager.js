@@ -16,16 +16,16 @@ class CharsManager {
     initChars = () => {
 
         this.chars[1].push(
-            new Char(1, new Squire(500)),
-            new Char(1, new Dragon(30)),
-            new Char(1, new Elf(215)),
-            new Char(1, new Magician(20))
+            new Squire(1, 500), //new Char(1, new Squire(500)),
+            new Dragon(1, 30) ,//new Char(1, new Dragon(30)),
+            new Elf(1, 215), //new Char(1, new Elf(215)),
+            new Magician(1, 20) //new Char(1, new Magician(20))
         );
 
         this.chars[2].push(
-            new Char(2, new Squire(70)),
-            new Char(2, new Dragon(2)),
-            new Char(2, new Elf(10))
+            new Squire(2, 70), //new Char(2, new Squire(70)),
+            new Dragon(2, 3), //new Char(2, new Dragon(2)),
+            new Elf(2, 10) //new Char(2, new Elf(10))
         );
     }
 
@@ -79,6 +79,35 @@ class CharsManager {
 
     }
 
+    checkIfHovered = () => {
+
+        for(let i = 1; i < this.chars.length; i++) {
+
+            for(let j = 0; j < this.chars[i].length; j++) {
+
+                charManager.isCharacterHover(i, j, cursor.getPosition());
+
+                if(charManager.getChar(i, j).isHover()) { return; }
+            }
+        }
+
+        this.setHoveredChar(null, null);
+
+    }
+
+    isCharacterHover = (i, j, cursor) => {
+
+        const char = this.getChar(i, j);
+
+        if((cursor.X > char.getPosition()['X'] && cursor.X < char.getPosition()['X'] + char.getSide())
+            && (cursor.Y > char.getPosition()['Y'] && cursor.Y < char.getPosition()['Y'] + char.getSide())) {
+
+            this.setHoveredChar(i, j);
+            charManager.getChar(i, j).setHover(true);
+        } else {
+            charManager.getChar(i, j).setHover(false);
+        }
+    }
 
     setHoveredChar = (team, char) => { this.hovered_char['team'] = team, this.hovered_char['charIndex'] = char; console.log(this.getHoveredChar()); }
 
